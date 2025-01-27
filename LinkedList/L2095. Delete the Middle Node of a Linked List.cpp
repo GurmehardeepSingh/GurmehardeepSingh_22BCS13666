@@ -10,8 +10,8 @@
  */
 class Solution {
 public:
-    ListNode* middleNode(ListNode* head) {
-        int count=0;
+    ListNode* deleteMiddle(ListNode* head) {
+         int count=0;
         ListNode* curr=head;
         while(curr!=NULL)
         {
@@ -19,14 +19,19 @@ public:
             curr=curr->next;
         }
         
+        if(count==1)
+        head=NULL;
+    else{
         curr=head;
         count=count/2;
         cout<<count;
-        while(count!=0)
+        while(count!=1)
         {
             curr=curr->next;
             count--;
         }
-        return curr;
+        curr->next=curr->next->next;
+    }
+        return head;
     }
 };
